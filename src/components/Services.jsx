@@ -2,50 +2,50 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../ui/use-toast';
-import { FaFan, FaWashingMachine, FaFire, FaBreadSlice, FaTv, FaIron } from 'react-icons/fa';
+import { Fan, WashingMachine, Flame, Cookie, Tv, Iron } from 'lucide-react'; // ← GANTI INI
 
 const Services = () => {
   const { toast } = useToast();
-  const navigate = useNavigate(); // <-- pakai hook react-router
+  const navigate = useNavigate();
 
   const services = [
     {
-      icon: FaFan,
+      icon: Fan, // ← Ganti dari FaFan
       title: 'Perbaikan Kipas Angin',
       description: 'Tidak bisa menyala',
       features: ['Ganti Kapasitor', 'Ganti Dinamo', 'Perbaikan Switch ON/OFF', 'Cek Kelistrikan'],
       color: 'from-red-500 to-red-600'
     },
     {
-      icon: FaWashingMachine,
+      icon: WashingMachine, // ← Ganti dari FaWashingMachine
       title: 'Perbaikan Mesin Cuci',
       description: 'Kelistrikan terputus sehingga mesin mati',
       features: ['Ganti Tombol', 'Perbaikan Dinamo Pengering', 'Perbaikan Dinamo Cuci'],
       color: 'from-red-600 to-red-700'
     },
     {
-      icon: FaFire,
+      icon: Flame, // ← Ganti dari FaFire
       title: 'Perbaikan Kompor',
       description: 'Api menyala kecil',
       features: ['Cleaning', 'Ganti Burner'],
       color: 'from-red-700 to-red-800'
     },
     {
-      icon: FaBreadSlice,
+      icon: Cookie, // ← Ganti dari FaBreadSlice
       title: 'Perbaikan Magic Com',
       description: 'Tidak panas atau nasi cepat basi',
       features: ['Cek Kelistrikan', 'Ganti Power Supply', 'Ganti Elemen Pemanas'],
       color: 'from-red-500 to-red-600'
     },
     {
-      icon: FaTv,
+      icon: Tv, // ← Ganti dari FaTv
       title: 'Perbaikan Set Top Box',
       description: 'Mati total',
       features: ['Ganti Kapasitor', 'Cek Kelistrikan', 'Ganti Resistor'],
       color: 'from-red-600 to-red-700'
     },
     {
-      icon: FaIron,
+      icon: Iron, // ← Ganti dari FaIron (nama sama!)
       title: 'Perbaikan Setrika',
       description: 'Tidak panas atau mati total',
       features: ['Ganti dinamo', 'Ganti Kapasitor', 'Cek Kelistrikan'],
@@ -54,7 +54,6 @@ const Services = () => {
   ];
 
   const handleServiceClick = (serviceTitle) => {
-    // Mengarahkan ke halaman booking dengan opsional bisa kirim query param
     navigate('/booking', { state: { service: serviceTitle } });
   };
 
