@@ -48,10 +48,10 @@ const Gallery = () => {
           className="text-center mb-16"
         >
           <span className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            Portfolio
+            GALERI
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Galeri Pekerjaan
+            Portfolio
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Menangani berbagai jenis perbaikan perangkat elektronik

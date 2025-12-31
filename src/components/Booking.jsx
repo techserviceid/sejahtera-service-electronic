@@ -55,11 +55,6 @@ const Booking = () => {
   // Buka WhatsApp agar kamu menerima pesan
   window.open(waUrl, '_blank');
 
-    toast({
-      title: '✅ Booking Berhasil!',
-      description: 'Booking Anda telah diterima. Kami akan menghubungi Anda segera untuk konfirmasi.',
-    });
-
     setFormData({
       name: '',
       phone: '',
@@ -82,7 +77,7 @@ const Booking = () => {
           className="text-center mb-16"
         >
           <span className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            Booking Online
+            BOOKING
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Booking Sekarang
@@ -229,12 +224,12 @@ const Booking = () => {
                   required
                 >
                   <option value="">Pilih layanan</option>
-                  <option value="smartphone">Service Smartphone</option>
-                  <option value="laptop">Service Laptop</option>
-                  <option value="tablet">Service Tablet</option>
-                  <option value="monitor">Service Monitor</option>
-                  <option value="komputer">Service Komputer</option>
-                  <option value="recovery">Recovery Data</option>
+                  <option value="smartphone">Perbaikan Kipas Angin</option>
+                  <option value="laptop">Perbaikan Mesin Cuci</option>
+                  <option value="tablet">Perbaikan Kompor</option>
+                  <option value="monitor">Perbaikan Magic Com</option>
+                  <option value="komputer">Perbaikan Set Top Box</option>
+                  <option value="recovery">Perbaikan Setrika</option>
                 </select>
               </div>
 

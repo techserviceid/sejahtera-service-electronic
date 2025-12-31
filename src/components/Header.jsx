@@ -49,30 +49,33 @@ const Header = () => {
 
           <nav className="hidden lg:flex items-center gap-8">
             <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
-              Beranda
+              BERANDA
             </button>
             <button onClick={() => scrollToSection('services')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
-              Layanan
+              LAYANAN
             </button>
             <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
-              Galeri
+              GALERI
             </button>
             <button onClick={() => scrollToSection('booking')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
-              Booking
+              BOOKING
             </button>
             <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
-              Kontak
+              KONTAK
             </button>
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Phone className="w-4 h-4 text-red-600" />
-              <span>(+62) 813-9281-3981</span>
-            </div>
-            <Button onClick={() => scrollToSection('booking')} className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white">
-              Booking Sekarang
-            </Button>
+            <a 
+              href="https://wa.me/6281392813981"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                0813-9281-3981
+              </Button>
+            </a>
           </div>
 
           <button
@@ -106,10 +109,16 @@ const Header = () => {
               <button onClick={() => scrollToSection('contact')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
                 KONTAK
               </button>
-              <div className="flex items-center gap-2 text-sm text-gray-600 pt-2">
-                <Phone className="w-4 h-4 text-red-600" />
-                <span>(+62) 813-9281-3981</span>
-              </div>
+              <a 
+              href="https://wa.me/6281392813981"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                0813-9281-3981
+              </Button>
+            </a>
             </nav>
           </motion.div>
         )}

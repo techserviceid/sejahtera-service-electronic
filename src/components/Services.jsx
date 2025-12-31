@@ -1,51 +1,49 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import { useToast } from '../ui/use-toast';
-import { Fan, WashingMachine, Flame, Cookie, Tv, Iron } from 'lucide-react'; // ← GANTI INI
+import { Fan, WashingMachine, Flame, CookingPot, Tv, Zap } from 'lucide-react';
 
 const Services = () => {
   const { toast } = useToast();
-  const navigate = useNavigate();
 
   const services = [
     {
-      icon: Fan, // ← Ganti dari FaFan
+      icon: Fan,
       title: 'Perbaikan Kipas Angin',
       description: 'Tidak bisa menyala',
       features: ['Ganti Kapasitor', 'Ganti Dinamo', 'Perbaikan Switch ON/OFF', 'Cek Kelistrikan'],
       color: 'from-red-500 to-red-600'
     },
     {
-      icon: WashingMachine, // ← Ganti dari FaWashingMachine
+      icon: WashingMachine,
       title: 'Perbaikan Mesin Cuci',
       description: 'Kelistrikan terputus sehingga mesin mati',
       features: ['Ganti Tombol', 'Perbaikan Dinamo Pengering', 'Perbaikan Dinamo Cuci'],
       color: 'from-red-600 to-red-700'
     },
     {
-      icon: Flame, // ← Ganti dari FaFire
+      icon: Flame,
       title: 'Perbaikan Kompor',
       description: 'Api menyala kecil',
       features: ['Cleaning', 'Ganti Burner'],
       color: 'from-red-700 to-red-800'
     },
     {
-      icon: Cookie, // ← Ganti dari FaBreadSlice
+      icon: CookingPot,
       title: 'Perbaikan Magic Com',
       description: 'Tidak panas atau nasi cepat basi',
       features: ['Cek Kelistrikan', 'Ganti Power Supply', 'Ganti Elemen Pemanas'],
       color: 'from-red-500 to-red-600'
     },
     {
-      icon: Tv, // ← Ganti dari FaTv
+      icon: Tv,
       title: 'Perbaikan Set Top Box',
       description: 'Mati total',
       features: ['Ganti Kapasitor', 'Cek Kelistrikan', 'Ganti Resistor'],
       color: 'from-red-600 to-red-700'
     },
     {
-      icon: Iron, // ← Ganti dari FaIron (nama sama!)
+      icon: Zap,
       title: 'Perbaikan Setrika',
       description: 'Tidak panas atau mati total',
       features: ['Ganti dinamo', 'Ganti Kapasitor', 'Cek Kelistrikan'],
@@ -54,7 +52,11 @@ const Services = () => {
   ];
 
   const handleServiceClick = (serviceTitle) => {
-    navigate('/booking', { state: { service: serviceTitle } });
+    // Scroll smooth ke section booking
+    const bookingSection = document.getElementById('booking');
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
@@ -67,7 +69,7 @@ const Services = () => {
           className="text-center mb-16"
         >
           <span className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            Layanan
+            LAYANAN
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Service Electronic

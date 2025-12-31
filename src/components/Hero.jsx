@@ -62,7 +62,7 @@ const Hero = () => {
               <Button
                 onClick={() => scrollToSection('booking')}
                 size="lg"
-                className="bg-white text-red-600 hover:bg-red-50 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg w-full sm:w-auto"
+                className="border-2 border-white text-white hover:bg-white hover:text-red-600 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg w-full sm:w-auto"
               >
                 Booking Sekarang
               </Button>
@@ -107,7 +107,7 @@ const Hero = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1658212662417-a2a76efe25df"
+                src="https://images.unsplash.com/photo-1700427296131-0cc4c4610fc6?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Professional technician repairing electronic devices"
                 className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
               />
@@ -126,7 +126,7 @@ const Hero = () => {
                   <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-xl sm:text-2xl font-bold text-gray-900">5000+</p>
+                  <p className="text-xl sm:text-1xl font-bold text-gray-900">Tanggung Jawab</p>
                   <p className="text-xs sm:text-sm text-gray-600">Pelanggan Puas</p>
                 </div>
               </div>

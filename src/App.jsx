@@ -1,6 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -12,7 +11,7 @@ import { Toaster } from "./ui/toaster";
 
 function App() {
   return (
-    <Router>
+    <HelmetProvider>
       <Helmet>
         <title>Sejahtera Service - Service Electronic</title>
         <meta
@@ -23,25 +22,15 @@ function App() {
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <Services />
-                <Gallery />
-                <Booking />
-                <Contact />
-              </>
-            }
-          />
-          <Route path="/booking" element={<Booking />} />
-        </Routes>
+        <Hero />
+        <Services />
+        <Gallery />
+        <Booking />
+        <Contact />
         <Footer />
         <Toaster />
       </div>
-    </Router>
+    </HelmetProvider>
   );
 }
 

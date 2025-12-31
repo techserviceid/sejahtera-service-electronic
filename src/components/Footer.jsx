@@ -134,7 +134,7 @@ const Footer = () => {
                         rel="noopener noreferrer"
                         className="hover:text-green-600 transition-colors"
                       >
-                        (+62) 813-9281-3981
+                        0813-9281-3981
                       </a>
                 </p>
               </li>
