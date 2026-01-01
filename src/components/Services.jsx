@@ -10,43 +10,31 @@ const Services = () => {
     {
       icon: Fan,
       title: 'Perbaikan Kipas Angin',
-      description: 'Tidak bisa menyala',
-      features: ['Ganti Kapasitor', 'Ganti Dinamo', 'Perbaikan Switch ON/OFF', 'Cek Kelistrikan'],
       color: 'from-red-500 to-red-600'
     },
     {
       icon: WashingMachine,
       title: 'Perbaikan Mesin Cuci',
-      description: 'Kelistrikan terputus sehingga mesin mati',
-      features: ['Ganti Tombol', 'Perbaikan Dinamo Pengering', 'Perbaikan Dinamo Cuci'],
       color: 'from-red-600 to-red-700'
     },
     {
       icon: Flame,
       title: 'Perbaikan Kompor',
-      description: 'Api menyala kecil',
-      features: ['Cleaning', 'Ganti Burner'],
       color: 'from-red-700 to-red-800'
     },
     {
       icon: CookingPot,
       title: 'Perbaikan Magic Com',
-      description: 'Tidak panas atau nasi cepat basi',
-      features: ['Cek Kelistrikan', 'Ganti Power Supply', 'Ganti Elemen Pemanas'],
       color: 'from-red-500 to-red-600'
     },
     {
       icon: Tv,
       title: 'Perbaikan Set Top Box',
-      description: 'Mati total',
-      features: ['Ganti Kapasitor', 'Cek Kelistrikan', 'Ganti Resistor'],
       color: 'from-red-600 to-red-700'
     },
     {
       icon: Zap,
       title: 'Perbaikan Setrika',
-      description: 'Tidak panas atau mati total',
-      features: ['Ganti dinamo', 'Ganti Kapasitor', 'Cek Kelistrikan'],
       color: 'from-red-700 to-red-800'
     }
   ];
@@ -75,7 +63,7 @@ const Services = () => {
             Service Electronic
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Menyediakan berbagai layanan perbaikan dan maintenance untuk semua jenis perangkat elektronik Anda
+            Melayani perbaikan dan maintenance pada perangkat elektronik
           </p>
         </motion.div>
 

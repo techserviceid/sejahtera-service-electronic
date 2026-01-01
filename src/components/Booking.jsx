@@ -80,10 +80,10 @@ const Booking = () => {
             BOOKING
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Booking Sekarang
+            Ayo Buruan!
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Jadwalkan service electronic Anda dengan mudah
+            Jadwalkan service electronic Anda
           </p>
         </motion.div>
 
@@ -127,10 +127,6 @@ const Booking = () => {
                 <li className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-xs">✓</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Teknisi Siap</h4>
-                    <p className="text-gray-600 text-sm">Teknisi kami sudah siap menangani device Anda</p>
                   </div>
                 </li>
               </ul>
@@ -181,6 +177,22 @@ const Booking = () => {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Email
+                </label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Nomor WhatsApp <span className="text-red-600">*</span>
                 </label>
                 <div className="relative">
@@ -198,22 +210,6 @@ const Booking = () => {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Email
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Jenis Layanan <span className="text-red-600">*</span>
                 </label>
                 <select
@@ -224,18 +220,18 @@ const Booking = () => {
                   required
                 >
                   <option value="">Pilih layanan</option>
-                  <option value="smartphone">Perbaikan Kipas Angin</option>
-                  <option value="laptop">Perbaikan Mesin Cuci</option>
-                  <option value="tablet">Perbaikan Kompor</option>
-                  <option value="monitor">Perbaikan Magic Com</option>
-                  <option value="komputer">Perbaikan Set Top Box</option>
-                  <option value="recovery">Perbaikan Setrika</option>
+                  <option value="Kipas Angin">Perbaikan Kipas Angin</option>
+                  <option value="Mesin Cuci">Perbaikan Mesin Cuci</option>
+                  <option value="Kompor">Perbaikan Kompor</option>
+                  <option value="Magic Com">Perbaikan Magic Com</option>
+                  <option value="Tv">Perbaikan Set Top Box</option>
+                  <option value="Setrika">Perbaikan Setrika</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Tipe Device
+                  Merk
                 </label>
                 <input
                   type="text"

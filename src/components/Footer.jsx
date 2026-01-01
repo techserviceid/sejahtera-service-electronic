@@ -35,71 +35,6 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* SERVICES */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-col items-center lg:items-start"
-          >
-            <span className="text-lg font-bold mb-4 text-center lg:text-left">
-              Layanan Kami
-            </span>
-
-            <ul className="space-y-2 text-center lg:text-left">
-              {[
-                'Perbaikan Kipas Angin',
-                'Perbaikan Mesin Cuci',
-                'Perbaikan Kompor',
-                'Perbaikan Magic Com',
-                'Perbaikan Set Top Box',
-                'Perbaikan Setrika'
-              ].map((item, i) => (
-                <li key={i}>
-                  <button
-                    onClick={() => scrollToSection('services')}
-                    className="text-gray-400 hover:text-red-400 transition-colors"
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* MENU */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-col items-center lg:items-start"
-          >
-            <span className="text-lg font-bold mb-4 text-center lg:text-left">
-              Menu
-            </span>
-
-            <ul className="space-y-2 text-center lg:text-left">
-              {[
-                ['home', 'BERANDA'],
-                ['services', 'LAYANAN'],
-                ['gallery', 'GALERI'],
-                ['booking', 'BOOKING'],
-                ['contact', 'KONTAK'],
-              ].map(([id, label]) => (
-                <li key={id}>
-                  <button
-                    onClick={() => scrollToSection(id)}
-                    className="text-gray-400 hover:text-red-400 transition-colors"
-                  >
-                    {label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
           {/* CONTACT */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -136,15 +71,6 @@ const Footer = () => {
                       >
                         0813-9281-3981
                       </a>
-                </p>
-              </li>
-
-              {/* ALAMAT */}
-              <li className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-3 text-center sm:text-left">
-                <MapPin className="w-5 h-5 text-red-400 flex-shrink-0" />
-                <p className="text-gray-400 text-sm">
-                  Jl. Anggrek Grendeng, Purwokerto Utara<br />
-                  Banyumas 53122
                 </p>
               </li>
             </ul>

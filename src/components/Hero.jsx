@@ -39,7 +39,7 @@ const Hero = () => {
               className="inline-block bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6"
             >
               <span className="text-xs sm:text-sm font-semibold">
-                Layanan Service Elektronik Profesional
+                Layanan Profesional
               </span>
             </motion.div>
 
@@ -53,8 +53,7 @@ const Hero = () => {
 
             {/* Description */}
             <p className="text-sm sm:text-base lg:text-lg text-red-50 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Teknisi berpengalaman siap menangani berbagai kerusakan elektronik Anda.
-              Garansi service, spare part original, dan harga transparan.
+              Teknisi berpengalaman siap menangani kerusakan elektronik Anda
             </p>
 
             {/* CTA Buttons */}

@@ -129,7 +129,7 @@ const Contact = () => {
             Ada Pertanyaan?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Siap menjawab dan memberikan solusi terbaik untuk kebutuhan service elektronik Anda
+            Siap menjawab dan memberikan solusi terbaik
           </p>
         </motion.div>
 
@@ -180,20 +180,6 @@ const Contact = () => {
                     <p className="text-gray-600">
                       Jl. Anggrek Grendeng, Purwokerto Utara<br />
                       Banyumas Kode Pos 53122
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Jam Operasional</h4>
-                    <p className="text-gray-600">
-                      Senin - Jumat: 09:00 - 18:00<br />
-                      Sabtu: 09:00 - 15:00<br />
-                      Minggu: Tutup
                     </p>
                   </div>
                 </div>
