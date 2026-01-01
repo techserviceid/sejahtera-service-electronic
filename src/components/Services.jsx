@@ -86,19 +86,6 @@ const Services = () => {
                 {service.title}
               </h3>
 
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {service.description}
-              </p>
-
-              <ul className="space-y-2">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-red-600 rounded-full" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
               <div className="mt-6 pt-6 border-t border-gray-100">
                 <button
                   onClick={() => handleServiceClick(service.title)}
