@@ -100,8 +100,8 @@ const Services = () => {
 
   return (
     <>
-      <section id="services" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 overflow-x-hidden">
+        <div className="container mx-auto px-4 max-w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -228,7 +228,7 @@ const Services = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-50 bg-black/98 flex items-center justify-center cursor-pointer"
+            className="fixed inset-0 z-50 bg-black/98 flex items-center justify-center cursor-pointer overflow-hidden"
           >
             <button
               onClick={() => setSelectedImage(null)}

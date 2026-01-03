@@ -23,22 +23,22 @@ const Hero = () => {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 lg:gap-12 items-center">
 
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-white flex flex-col items-center order-2 lg:order-1"
+            className="text-white flex flex-col items-center order-2 lg:order-1 lg:col-span-3"
           >
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-block bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6"
+              className="inline-block bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-2 sm:mb-6"
             >
               <span className="text-xs sm:text-sm font-semibold">
                 Layanan Perbaikan
@@ -52,27 +52,58 @@ const Hero = () => {
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base lg:text-lg text-red-50 mb-6 sm:mb-8 leading-relaxed max-w-xl text-center">
+            <p className="text-sm sm:text-base lg:text-lg text-red-50 mb-4 sm:mb-5 leading-relaxed max-w-xl text-center">
               Teknisi kami siap menangani kerusakan elektronik Anda<br />
               Silakan tekan tombol di bawah
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center">
+            {/* TOMBOL BUTTON - UPDATED */}
+            <div className="relative flex flex-col items-center gap-2 mb-5 sm:mb-6">
+              {/* Ripple rings - Animated circles */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-full animate-ping"></div>
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/10 rounded-full animate-pulse absolute"></div>
+              </div>
+              
+              {/* Main Button */}
               <Button
                 onClick={() => scrollToSection('booking')}
-                size="lg"
                 className="
                   rounded-full 
-                  bg-white text-black 
-                  hover:bg-gray-100 
-                  font-semibold 
-                  w-12 h-12 
+                  bg-white 
+                  hover:bg-gray-50
+                  w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20
                   p-0 
                   flex items-center justify-center
+                  shadow-2xl
+                  hover:shadow-[0_0_40px_rgba(255,255,255,0.6)]
+                  transition-all
+                  duration-300
+                  hover:scale-110
+                  border-4 border-white/50
+                  relative
+                  z-10
+                  group
                 "
               >
-                Klik
+                <svg 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.8" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  className="w-9 h-9 sm:w-11 sm:h-11 text-red-600 group-hover:rotate-180 transition-transform duration-500"
+                >
+                  <path d="M12 2v10" />
+                  <path d="M18.4 6.6a9 9 0 1 1-12.77.04" />
+                </svg>
               </Button>
+              
+              {/* Label */}
+              <span className="text-white text-xs sm:text-sm font-semibold bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-white/20 z-10">
+                Mulai Service
+              </span>
             </div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-md">
@@ -100,13 +131,13 @@ const Hero = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative order-1 lg:order-2 pb-0 sm:pb-0"
+            className="relative order-1 lg:order-2 mb-0 lg:mb-0 lg:col-span-2"
           >
-            <div className="relative">
+            <div className="relative w-full max-w-full lg:max-w-lg xl:max-w-xl mx-auto">
               <img
                 src={heroImage} 
                 alt="Teknisi service elektronik"
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain max-w-full"
               />
             </div>
           </motion.div>

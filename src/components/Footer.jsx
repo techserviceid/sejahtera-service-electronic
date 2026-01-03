@@ -10,8 +10,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-16 pb-8">
-      <div className="container mx-auto px-4">
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-16 pb-8 overflow-x-hidden">
+      <div className="container mx-auto px-4 max-w-full">
         {/* TOP */}
         <div className="flex flex-col items-center mb-12 max-w-md mx-auto">
           

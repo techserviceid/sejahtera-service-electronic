@@ -68,8 +68,8 @@ const Booking = () => {
   };
 
   return (
-    <section id="booking" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="booking" className="py-20 bg-white overflow-x-hidden">
+      <div className="container mx-auto px-4 max-w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
