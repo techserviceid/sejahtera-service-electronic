@@ -58,8 +58,13 @@ const Header = () => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Close menu first on mobile
       setIsMobileMenuOpen(false);
+      
+      // Wait a bit for menu animation to complete, then scroll
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
     }
   };
 
