@@ -36,11 +36,6 @@ const Contact = () => {
     e.preventDefault();
     
     if (!newComment.name || !newComment.message) {
-      toast({
-        title: '⚠️ Form Tidak Lengkap',
-        description: 'Mohon isi nama dan ulasan',
-        variant: 'destructive'
-      });
       return;
     }
 
