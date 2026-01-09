@@ -26,21 +26,21 @@ const FAQ = () => {
       ]
     },
     {
-      category: 'Biaya & Pembayaran',
-      icon: CreditCard,
-      color: 'from-green-500 to-green-600',
+      category: 'Proses Service',
+      icon: Clock,
+      color: 'from-red-500 to-red-600',
       questions: [
         {
-          question: 'Berapa biaya service?',
-          answer: 'Biaya bervariasi tergantung jenis kerusakan dan spare part yang dibutuhkan. Kami akan memberikan estimasi biaya setelah pengecekan awal'
+          question: 'Bagaimana alur proses service?',
+          answer: '1) Booking atau datang langsung 2) Pengecekan & diagnosa (GRATIS) 3) Konfirmasi biaya 4) Perbaikan 5) Quality check 6) Pembayaran & pengambilan. Anda akan diinformasikan di setiap tahap'
         },
         {
-          question: 'Apakah ada biaya pengecekan?',
-          answer: 'Pengecekan dan diagnosa GRATIS! Anda hanya membayar jika setuju melanjutkan perbaikan. Jika dibatalkan, tidak ada biaya sama sekali'
+          question: 'Apakah saya harus menunggu saat service?',
+          answer: 'Tidak perlu! Anda bisa meninggalkan barang dan mengambilnya setelah selesai. Kami akan menghubungi Anda via WhatsApp ketika sudah selesai'
         },
         {
-          question: 'Metode pembayaran apa saja yang diterima?',
-          answer: 'Kami menerima pembayaran tunai, transfer bank (BRI), dan e-wallet (Dana). Pembayaran dilakukan setelah barang selesai diperbaiki dan berfungsi normal'
+          question: 'Bagaimana jika spare part tidak tersedia?',
+          answer: 'Kami akan mencarikan spare part original dari supplier resmi. Biasanya 2-3 hari sampai. Anda akan dihubungi untuk konfirmasi harga dan estimasi waktu kedatangan spare part'
         }
       ]
     },
@@ -64,24 +64,24 @@ const FAQ = () => {
       ]
     },
     {
-      category: 'Proses Service',
-      icon: Clock,
-      color: 'from-red-500 to-red-600',
+      category: 'Pembayaran',
+      icon: CreditCard,
+      color: 'from-green-500 to-green-600',
       questions: [
         {
-          question: 'Bagaimana alur proses service?',
-          answer: '1) Booking atau datang langsung 2) Pengecekan & diagnosa (GRATIS) 3) Konfirmasi biaya 4) Perbaikan 5) Quality check 6) Pembayaran & pengambilan. Anda akan diinformasikan di setiap tahap'
+          question: 'Berapa biaya service?',
+          answer: 'Biaya bervariasi tergantung jenis kerusakan dan spare part yang dibutuhkan. Kami akan memberikan estimasi biaya setelah pengecekan awal'
         },
         {
-          question: 'Apakah saya harus menunggu saat service?',
-          answer: 'Tidak perlu! Anda bisa meninggalkan barang dan mengambilnya setelah selesai. Kami akan menghubungi Anda via WhatsApp ketika sudah selesai'
+          question: 'Apakah ada biaya pengecekan?',
+          answer: 'Pengecekan dan diagnosa GRATIS! Anda hanya membayar jika setuju melanjutkan perbaikan. Jika dibatalkan, tidak ada biaya sama sekali'
         },
         {
-          question: 'Bagaimana jika spare part tidak tersedia?',
-          answer: 'Kami akan mencarikan spare part original dari supplier resmi. Biasanya 2-3 hari sampai. Anda akan dihubungi untuk konfirmasi harga dan estimasi waktu kedatangan spare part'
+          question: 'Metode pembayaran apa saja yang diterima?',
+          answer: 'Kami menerima pembayaran tunai, transfer bank (BRI), dan e-wallet (Dana). Pembayaran dilakukan setelah barang selesai diperbaiki dan berfungsi normal'
         }
       ]
-    }
+    },
   ];
 
   const toggleFAQ = (categoryIndex, questionIndex) => {
