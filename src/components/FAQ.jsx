@@ -16,8 +16,8 @@ const FAQ = () => {
           answer: 'Waktu pengerjaan tergantung jenis kerusakan. Service ringan bisa selesai 1-2 hari, sedangkan kerusakan kompleks membutuhkan 3 hari. Kami akan menginformasikan estimasi waktu setelah pengecekan'
         },
         {
-          question: 'Apakah bisa service di tempat?',
-          answer: 'Ya, kami menyediakan layanan service panggilan untuk area Purwokerto dan sekitarnya dengan biaya tambahan transportasi. Silakan hubungi kami untuk jadwal kunjungan'
+          question: 'Apakah bisa antar jemput barang?',
+          answer: 'Ya, kami menyediakan layanan antar jemput atau service panggilan untuk area Purwokerto dan sekitarnya dengan biaya tambahan transportasi. Silakan hubungi kami untuk mengatur jadwal'
         },
         {
           question: 'Elektronik apa saja yang bisa diperbaiki?',
@@ -32,7 +32,13 @@ const FAQ = () => {
       questions: [
         {
           question: 'Bagaimana alur proses service?',
-          answer: '1) Booking atau datang langsung 2) Pengecekan & diagnosa (GRATIS) 3) Konfirmasi biaya 4) Perbaikan 5) Quality check 6) Pembayaran & pengambilan. Anda akan diinformasikan di setiap tahap'
+          answer: [
+                'Booking atau datang langsung',
+                'Pengecekan dan diagnosa',
+                'Konfirmasi kerusakan dan estimasi biaya',
+                'Lakukan perbaikan',
+                'Pembayaran dan pengambilan'
+                ]
         },
         {
           question: 'Apakah saya harus menunggu saat service?',
@@ -40,7 +46,7 @@ const FAQ = () => {
         },
         {
           question: 'Bagaimana jika spare part tidak tersedia?',
-          answer: 'Kami akan mencarikan spare part original dari supplier resmi. Biasanya 2-3 hari sampai. Anda akan dihubungi untuk konfirmasi harga dan estimasi waktu kedatangan spare part'
+          answer: 'Kami akan mencarikan spare part seri persamaan. Biasanya 2-3 hari sampai. Anda akan dihubungi untuk konfirmasi harga dan estimasi waktu kedatangan spare part'
         }
       ]
     },
@@ -59,7 +65,7 @@ const FAQ = () => {
         },
         {
           question: 'Bagaimana cara klaim garansi?',
-          answer: 'Simpan struk atau nota service Anda. Jika ada masalah, hubungi kami dan bawa barang beserta nota. Kami akan melakukan pengecekan dan perbaikan garansi tanpa biaya tambahan'
+          answer: 'Simpan struk atau nota service Anda. Jika ada masalah hubungi kami dan bawa barang beserta nota. Kami akan melakukan pengecekan dan perbaikan garansi tanpa biaya tambahan'
         }
       ]
     },
@@ -178,9 +184,19 @@ const FAQ = () => {
                             className="overflow-hidden"
                           >
                             <div className="px-4 pb-5 pl-16">
-                              <p className="text-gray-600 leading-relaxed">
-                                {faq.answer}
-                              </p>
+                              {Array.isArray(faq.answer) ? (
+                                <ol className="list-decimal pl-5 space-y-2 text-gray-600">
+                                    {faq.answer.map((item, i) => (
+                                    <li key={i} className="leading-relaxed">
+                                        {item}
+                                    </li>
+                                    ))}
+                                </ol>
+                                ) : (
+                                <p className="text-gray-600 leading-relaxed">
+                                    {faq.answer}
+                                </p>
+                                )}
                             </div>
                           </motion.div>
                         )}
