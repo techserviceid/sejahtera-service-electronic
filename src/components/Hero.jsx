@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
 import { Button } from '../ui/button';
-import heroImage from '../assets/hero.png';
+import heroImage from '../assets/hero-9190b8d3.png';
 
 const Hero = () => {
   const scrollToSection = (id) => {
