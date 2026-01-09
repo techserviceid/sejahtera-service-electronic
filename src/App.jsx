@@ -6,6 +6,7 @@ import Services from './components/Services';
 import Booking from './components/Booking';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FAQ from './components/FAQ';
 import { Toaster } from "./ui/toaster";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Hero />
         <Services />
         <Booking />
+        <FAQ />
         <Contact />
         <Footer />
         <Toaster />

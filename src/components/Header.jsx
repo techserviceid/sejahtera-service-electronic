@@ -122,6 +122,9 @@ const Header = () => {
               <button onClick={() => scrollToSection('booking')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
                 BOOKING
               </button>
+              <button onClick={() => scrollToSection('faq')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
+                FAQ
+              </button>
               <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
                 KONTAK
               </button>
@@ -173,6 +176,9 @@ const Header = () => {
                   </button>
                   <button onClick={() => scrollToSection('booking')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
                     BOOKING
+                  </button>
+                  <button onClick={() => scrollToSection('faq')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
+                    FAQ
                   </button>
                   <button onClick={() => scrollToSection('contact')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
                     KONTAK

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, X, Trash2, Lock, Unlock } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, X, Lock, Unlock, Star, TrendingUp, Award } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useToast } from '../ui/use-toast';
 
@@ -10,7 +10,8 @@ const Contact = () => {
   const [newComment, setNewComment] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    rating: 0
   });
   const [isAdmin, setIsAdmin] = useState(false);
   const [adminPassword, setAdminPassword] = useState('');
@@ -19,9 +20,18 @@ const Contact = () => {
   const [logoutPassword, setLogoutPassword] = useState('');
   const [replyTexts, setReplyTexts] = useState({});
   const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [hoveredRating, setHoveredRating] = useState(0);
 
-  // Password admin (ganti sesuai keinginan)
-  const ADMIN_PASSWORD = 'smartelectronic';
+  const ADMIN_PASSWORD_HASH = "dd07dce72257a331fc33b952a18c118a04d4f969c1d9e91def4d49ca13113332";
+
+  const hashPassword = async (password) => {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  };
 
   useEffect(() => {
     const storedComments = JSON.parse(localStorage.getItem('contact_messages') || '[]');
@@ -30,9 +40,10 @@ const Contact = () => {
     // Cek apakah admin sudah login
     const adminLoggedIn = localStorage.getItem('admin_logged_in') === 'true';
     setIsAdmin(adminLoggedIn);
+    setLoading(false);
   }, []);
 
-  const handleSubmitComment = (e) => {
+  const handleSubmitComment = async (e) => {
     e.preventDefault();
     
     if (!newComment.name || !newComment.message) {
@@ -44,18 +55,24 @@ const Contact = () => {
       name: newComment.name,
       email: newComment.email,
       message: newComment.message,
-      date: new Date().toLocaleDateString('id-ID'),
-      reply: null
+      rating: newComment.rating || 5,
+      date: new Date().toLocaleDateString('id-ID', { 
+        day: 'numeric', 
+        month: 'numeric', 
+        year: 'numeric' 
+      }),
+      reply: null,
+      verified: false
     };
 
     const updatedComments = [comment, ...comments];
     setComments(updatedComments);
     localStorage.setItem('contact_messages', JSON.stringify(updatedComments));
-
-    setNewComment({ name: '', email: '', message: '' });
+    
+    setNewComment({ name: '', email: '', message: '', rating: 0 }); 
   };
 
-  const handleReply = (id) => {
+  const handleReply = async (id) => {
     const replyText = replyTexts[id];
     
     if (!replyText || !replyText.trim()) {
@@ -63,12 +80,11 @@ const Contact = () => {
     }
 
     const updatedComments = comments.map((c) =>
-      c.id === id ? { ...c, reply: replyText.trim() } : c
+      c.id === id ? { ...c, reply: replyText.trim(), verified: true } : c
     );
     setComments(updatedComments);
     localStorage.setItem('contact_messages', JSON.stringify(updatedComments));
-
-    // Clear reply text after sending
+    
     setReplyTexts(prev => {
       const updated = { ...prev };
       delete updated[id];
@@ -76,7 +92,7 @@ const Contact = () => {
     });
   };
 
-  const handleDeleteComment = (id) => {
+  const handleDeleteComment = async (id) => {
     const updatedComments = comments.filter((c) => c.id !== id);
     setComments(updatedComments);
     localStorage.setItem('contact_messages', JSON.stringify(updatedComments));
@@ -84,31 +100,49 @@ const Contact = () => {
   };
 
   const handleCancelComment = () => {
-    setNewComment({ name: '', email: '', message: '' });
+    setNewComment({ name: '', email: '', message: '', rating: 5 });
   };
 
-  const handleAdminLogin = (e) => {
+  const handleAdminLogin = async (e) => {
     e.preventDefault();
     
-    if (adminPassword === ADMIN_PASSWORD) {
+    const hashedInput = await hashPassword(adminPassword);
+    
+    if (hashedInput === ADMIN_PASSWORD_HASH) {
       setIsAdmin(true);
-      localStorage.setItem('admin_logged_in', 'true');
+      const sessionToken = await hashPassword(Date.now().toString());
+      sessionStorage.setItem('admin_session', sessionToken);
+      sessionStorage.setItem('admin_session_time', Date.now().toString());
       setShowAdminLogin(false);
+      setAdminPassword('');
+    } else {
       setAdminPassword('');
     }
   };
 
-  const handleAdminLogout = (e) => {
+  const handleAdminLogout = async (e) => {
     e.preventDefault();
     
-    if (logoutPassword === ADMIN_PASSWORD) {
+    const hashedInput = await hashPassword(logoutPassword);
+    
+    if (hashedInput === ADMIN_PASSWORD_HASH) {
       setIsAdmin(false);
-      localStorage.removeItem('admin_logged_in');
+      sessionStorage.removeItem('admin_session');
+      sessionStorage.removeItem('admin_session_time');
       setShowLogoutConfirm(false);
       setLogoutPassword('');
       setShowAdminLogin(false);
+    } else {
+      setLogoutPassword('');
     }
   };
+
+  // Statistik
+  const averageRating = comments.length > 0 
+    ? (comments.reduce((sum, c) => sum + (c.rating || 5), 0) / comments.length).toFixed(1)
+    : 5.0;
+
+  const verifiedCount = comments.filter(c => c.verified).length;
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 overflow-x-hidden">
@@ -128,6 +162,51 @@ const Contact = () => {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Kami siap menjawab dan memberikan solusi terbaik
           </p>
+
+          {/* Statistics Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-xl p-6 shadow-lg"
+            >
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Star className="w-6 h-6 text-yellow-500 fill-yellow-500" />
+                <span className="text-3xl font-bold text-gray-900">{averageRating}</span>
+              </div>
+              <p className="text-sm text-gray-600">Rating Rata-rata</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-xl p-6 shadow-lg"
+            >
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Award className="w-6 h-6 text-green-500" />
+                <span className="text-3xl font-bold text-gray-900">{verifiedCount}</span>
+              </div>
+              <p className="text-sm text-gray-600">Ulasan Terverifikasi</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-white rounded-xl p-6 shadow-lg"
+            >
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <TrendingUp className="w-6 h-6 text-blue-500" />
+                <span className="text-3xl font-bold text-gray-900">{comments.length}</span>
+              </div>
+              <p className="text-sm text-gray-600">Total Ulasan</p>
+            </motion.div>
+          </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -209,7 +288,7 @@ const Contact = () => {
             {/* Form Ketik Ulasan */}
             <div className="bg-white rounded-2xl shadow-xl p-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Ketik Ulasan</h3>
-              <div className="space-y-4">
+              <form onSubmit={handleSubmitComment} className="space-y-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Nama <span className="text-red-600">*</span>
@@ -220,6 +299,7 @@ const Contact = () => {
                     onChange={(e) => setNewComment({...newComment, name: e.target.value})}
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                     placeholder="Nama Anda"
+                    required
                   />
                 </div>
 
@@ -232,8 +312,37 @@ const Contact = () => {
                     value={newComment.email}
                     onChange={(e) => setNewComment({...newComment, email: e.target.value})}
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
-                    placeholder="email@example.com"
+                    placeholder="example@gmail.com"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Rating <span className="text-red-600">*</span>
+                  </label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setNewComment((prev) => ({
+                          ...prev,
+                          rating: prev.rating === star ? 0 : star
+                      }))
+                    }
+                        
+                        className="transition-transform hover:scale-110"
+                      >
+                        <Star 
+                          className={`w-6 h-6 ${
+                            star <= newComment.rating
+                            ? 'text-yellow-400 fill-yellow-400'
+                            : 'text-gray-300'
+                          } transition-colors`}
+                        />
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div>
@@ -245,12 +354,13 @@ const Contact = () => {
                     onChange={(e) => setNewComment({...newComment, message: e.target.value})}
                     rows="4"
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all resize-none"
-                    placeholder="Ketik saja di sini...."
+                    placeholder="Ketik pengalaman Anda di sini..."
+                    required
                   ></textarea>
                 </div>
 
                 <Button
-                  onClick={handleSubmitComment}
+                  type="submit"
                   className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3"
                 >
                   <Send className="w-4 h-4 mr-2" />
@@ -262,13 +372,12 @@ const Contact = () => {
                     type="button"
                     onClick={handleCancelComment}
                     className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 rounded-lg transition-all flex items-center justify-center gap-2"
-                    title="Hapus semua isian"
                   >
                     <X className="w-4 h-4" />
                     Batalkan
                   </button>
                 )}
-              </div>
+              </form>
             </div>
 
             {/* Ulasan Pelanggan */}
@@ -304,31 +413,33 @@ const Contact = () => {
                     type="button"
                     onClick={() => setShowAdminLogin(false)}
                     className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 hover:bg-gray-200 p-1 rounded-full transition-all"
-                    title="Tutup"
                   >
                     <X className="w-5 h-5" />
                   </button>
                   
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Password
-                  </label>
-                  <div className="space-y-2">
-                    <input
-                      type="password"
-                      value={adminPassword}
-                      onChange={(e) => setAdminPassword(e.target.value)}
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                      placeholder="Masukkan password"
-                    />
-                    <Button
-                      onClick={handleAdminLogin}
-                      className="w-full bg-red-600 hover:bg-red-700 text-white"
-                    >
-                      Login
-                    </Button>
-                  </div>
+                  <form onSubmit={handleAdminLogin}>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Password
+                    </label>
+                    <div className="space-y-2">
+                      <input
+                        type="password"
+                        value={adminPassword}
+                        onChange={(e) => setAdminPassword(e.target.value)}
+                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        placeholder="Masukkan password"
+                        required
+                      />
+                      <Button
+                        type="submit"
+                        className="w-full bg-red-600 hover:bg-red-700 text-white"
+                      >
+                        Login
+                      </Button>
+                    </div>
+                  </form>
                   <p className="text-xs text-gray-500 mt-2">
-                    Hanya admin yang bisa membalas ulasan pelanggan
+                    Hanya admin yang dapat membalas ulasan pelanggan
                   </p>
                 </div>
               )}
@@ -339,7 +450,6 @@ const Contact = () => {
                     type="button"
                     onClick={() => setShowAdminLogin(false)}
                     className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 hover:bg-gray-200 p-1 rounded-full transition-all"
-                    title="Tutup"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -350,7 +460,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-green-900">Mode Admin Aktif</p>
-                      <p className="text-sm text-green-700">Anda dapat membalas ulasan pelanggan</p>
+                      <p className="text-sm text-green-700">Anda dapat membalas & menghapus ulasan</p>
                     </div>
                   </div>
                   
@@ -364,7 +474,7 @@ const Contact = () => {
                 </div>
               )}
 
-              {/* Modal Konfirmasi Logout dengan Password */}
+              {/* Modal Konfirmasi Logout */}
               {showLogoutConfirm && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
                   <motion.div
@@ -389,46 +499,48 @@ const Contact = () => {
                       Masukkan password untuk logout dari mode admin
                     </p>
                     
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Password
-                        </label>
-                        <input
-                          type="password"
-                          value={logoutPassword}
-                          onChange={(e) => setLogoutPassword(e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                          placeholder="Masukkan password"
-                          autoFocus
-                        />
+                    <form onSubmit={handleAdminLogout}>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">
+                            Password
+                          </label>
+                          <input
+                            type="password"
+                            value={logoutPassword}
+                            onChange={(e) => setLogoutPassword(e.target.value)}
+                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            placeholder="Masukkan password"
+                            autoFocus
+                            required
+                          />
+                        </div>
+                        
+                        <div className="flex gap-3">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setShowLogoutConfirm(false);
+                              setLogoutPassword('');
+                            }}
+                            className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 rounded-lg transition-all"
+                          >
+                            Batal
+                          </button>
+                          <button
+                            type="submit"
+                            className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition-all"
+                          >
+                            Logout
+                          </button>
+                        </div>
                       </div>
-                      
-                      <div className="flex gap-3">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setShowLogoutConfirm(false);
-                            setLogoutPassword('');
-                          }}
-                          className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 rounded-lg transition-all"
-                        >
-                          Batal
-                        </button>
-                        <button
-                          type="button"
-                          onClick={handleAdminLogout}
-                          className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition-all"
-                        >
-                          Logout
-                        </button>
-                      </div>
-                    </div>
+                    </form>
                   </motion.div>
                 </div>
               )}
 
-              {/* Modal Konfirmasi Hapus Ulasan */}
+              {/* Modal Konfirmasi Hapus */}
               {deleteConfirm !== null && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
                   <motion.div
@@ -447,7 +559,7 @@ const Contact = () => {
                     </div>
                     
                     <p className="text-gray-600 mb-6">
-                      Yakin ingin menghapus ulasan?
+                      Yakin ingin menghapus ulasan ini?
                     </p>
                     
                     <div className="flex gap-3">
@@ -471,39 +583,91 @@ const Contact = () => {
               )}
 
               <div className="max-h-[500px] overflow-y-auto space-y-4">
-                {comments.length === 0 && (
-                  <p className="text-gray-600 text-center py-8">Belum ada ulasan</p>
+                {loading && (
+                  <div className="text-center py-8">
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-red-600"></div>
+                    <p className="text-gray-600 mt-3">Memuat ulasan...</p>
+                  </div>
                 )}
                 
-                {comments.map((c) => (
-                  <div key={c.id} className="bg-gray-50 p-5 rounded-xl border border-gray-200 relative">
-                    <button
-                      onClick={() => setDeleteConfirm(c.id)}
-                      className="absolute top-3 right-3 text-gray-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-full transition-all"
-                      title="Hapus ulasan"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                    
-                    <div className="flex justify-between items-start mb-2 pr-8">
-                      <div>
-                        <p className="font-bold text-gray-900">{c.name}</p>
-                        {c.email && <p className="text-gray-500 text-sm">{c.email}</p>}
+                {!loading && comments.length === 0 && (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Mail className="w-8 h-8 text-gray-400" />
+                    </div>
+                    <p className="text-gray-600 font-medium">Belum ada ulasan</p>
+                  </div>
+                )}
+                
+                {!loading && comments.map((c) => (
+                  <div key={c.id} className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative">
+                    {/* Header Section - Nama dan Tanggal */}
+                    <div className="flex justify-between items-center mb-3">
+                      
+                      {/* Left Side - Nama dan Email */}
+                      <div className="flex-1 pr-4">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <p className="font-bold text-gray-900 text-lg">{c.name}</p>
+                          {c.verified && (
+                            <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full font-semibold flex items-center gap-0.5">
+                              <Award className="w-3 h-3" />
+                              Verified
+                            </span>
+                          )}
+                        </div>
+                        {c.email && <p className="text-gray-500 text-sm mt-0.5">{c.email}</p>}
                       </div>
-                      <p className="text-gray-400 text-xs">{c.date}</p>
+                      
+                      {/* Right Side - Tanggal dan Tombol Hapus */}
+                      <div className="flex items-center gap-2">
+                        <p className="text-gray-400 text-sm whitespace-nowrap">
+                          {c.date}
+                        </p>
+                        {isAdmin && (
+                          <button
+                            onClick={() => setDeleteConfirm(c.id)}
+                            className="text-gray-400 hover:text-red-600 hover:bg-red-50 p-1 rounded-full transition-all flex-shrink-0"
+                            title="Hapus ulasan"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        )}
+                      </div>
                     </div>
                     
-                    <p className="text-gray-800 mb-3">{c.message}</p>
+                    {/* Rating Section */}
+                    {c.rating > 0 && (
+                      <div className="flex gap-0.5 mt-0.5">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star 
+                            key={star}
+                            className={`w-3 h-3 ${
+                              star <= c.rating
+                                ? 'text-yellow-500 fill-yellow-500' 
+                                : 'text-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    )}
                     
+                    {/* Message Section */}
+                    <p className="text-gray-700 leading-relaxed">{c.message}</p>
+                    
+                    {/* Reply Section */}
                     {c.reply && (
-                      <div className="mt-3 p-3 bg-red-50 border-l-4 border-red-600 rounded-lg">
-                        <p className="text-red-600 font-semibold text-sm mb-1">Balasan dari Sejahtera Service:</p>
+                      <div className="mt-4 p-4 bg-gradient-to-br from-red-50 to-orange-50 border-l-4 border-red-600 rounded-lg">
+                        <p className="text-red-700 font-bold text-sm mb-2 flex items-center gap-2">
+                          <Send className="w-4 h-4" />
+                          Balasan dari Sejahtera Service:
+                        </p>
                         <p className="text-gray-800">{c.reply}</p>
                       </div>
                     )}
                     
+                    {/* Admin Reply Form */}
                     {!c.reply && isAdmin && (
-                      <div className="mt-3 space-y-2">
+                      <div className="mt-4 space-y-2">
                         <textarea
                           placeholder="Ketik balasan sebagai admin..."
                           rows="3"
@@ -515,13 +679,13 @@ const Contact = () => {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none text-sm"
                         ></textarea>
                         <div className="flex gap-2">
-                          <Button
+                          <button
                             onClick={() => handleReply(c.id)}
-                            className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 text-sm"
+                            className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition-all text-sm flex items-center justify-center gap-2"
                           >
-                            <Send className="w-4 h-4 mr-2" />
+                            <Send className="w-4 h-4" />
                             Kirim Balasan
-                          </Button>
+                          </button>
                           {replyTexts[c.id] && (
                             <button
                               onClick={() => setReplyTexts(prev => {
