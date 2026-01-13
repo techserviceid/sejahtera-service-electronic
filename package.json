@@ -10,7 +10,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://irfanramadhan11.github.io/sejahteraservice",
+  "homepage": "https://irfanramadhan11.github.io/sejahtera-service-electronic",
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.4",
     "@radix-ui/react-avatar": "^1.1.2",
