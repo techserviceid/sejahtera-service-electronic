@@ -66,7 +66,7 @@ const Services = () => {
     {
       icon: Droplets,
       title: 'Perbaikan Pompa Air',
-      description: 'Service pompa air rumah tangga dan industri dengan teknisi profesional',
+      description: 'Service pompa air rumah tangga dengan teknisi profesional',
       color: 'from-red-700 to-red-800',
       image: 'https://images.unsplash.com/photo-1639600993675-2281b2c939f0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },

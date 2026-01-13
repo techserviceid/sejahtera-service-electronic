@@ -21,7 +21,7 @@ const Header = () => {
       if (window.innerWidth < 1024) {
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
           setIsHidden(true);
-          setIsMobileMenuOpen(false); // Close menu when scrolling down
+          setIsMobileMenuOpen(false); 
         } else {
           setIsHidden(false);
         }
@@ -132,7 +132,7 @@ const Header = () => {
 
             <div className="hidden lg:flex items-center gap-4">
               <a 
-                href="https://wa.me/6281392813981"
+                href="https://wa.me/6285258463046"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -184,7 +184,7 @@ const Header = () => {
                     KONTAK
                   </button>
                   <a 
-                    href="https://wa.me/6281392813981"
+                    href="https://wa.me/6285258463046"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

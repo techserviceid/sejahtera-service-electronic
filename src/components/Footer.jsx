@@ -51,7 +51,7 @@ const Footer = () => {
                   href="mailto:irfanramadhan.dev@gmail.com"
                   className="text-gray-400 hover:text-red-400 transition-colors"
                 >
-                  irfanramadhan.dev@gmail.com
+                  sejahteraserviceid@gmail.com
                 </a>
               </li>
 
@@ -59,12 +59,12 @@ const Footer = () => {
               <li className="flex flex-col items-center gap-2 text-center">
                 <Phone className="w-6 h-6 text-red-400 flex-shrink-0" />
                 <a
-                  href="https://wa.me/6281392813981"
+                  href="https://wa.me/6285258463046"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-green-400 transition-colors"
                 >
-                  0813-9281-3981
+                  0852-5846-3046
                 </a>
               </li>
             </ul>

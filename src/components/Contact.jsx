@@ -55,7 +55,7 @@ const Contact = () => {
       name: newComment.name,
       email: newComment.email,
       message: newComment.message,
-      rating: newComment.rating || 5,
+      rating: newComment.rating || 0,
       date: new Date().toLocaleDateString('id-ID', { 
         day: 'numeric', 
         month: 'numeric', 
@@ -228,8 +228,8 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
                     <p className="text-gray-600">
-                      <a href="mailto:irfanramadhan.dev@gmail.com" className="hover:text-red-600 transition-colors">
-                        irfanramadhan.dev@gmail.com
+                      <a href="mailto:sejahteraserviceid@gmail.com" className="hover:text-red-600 transition-colors">
+                        sejahteraserviceid@gmail.com
                       </a>
                     </p>
                   </div>
@@ -242,8 +242,8 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">WhatsApp</h4>
                     <p className="text-gray-600">
-                      <a href="https://wa.me/6281392813981" target="_blank" rel="noopener noreferrer" className="hover:text-green-600 transition-colors">
-                        0813-9281-3981
+                      <a href="https://wa.me/6285258463046" target="_blank" rel="noopener noreferrer" className="hover:text-green-600 transition-colors">
+                        0852-5846-3046
                       </a>
                     </p>
                   </div>
@@ -354,7 +354,7 @@ const Contact = () => {
                     onChange={(e) => setNewComment({...newComment, message: e.target.value})}
                     rows="4"
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all resize-none"
-                    placeholder="Ketik pengalaman Anda di sini..."
+                    placeholder="Ketik di sini...."
                     required
                   ></textarea>
                 </div>

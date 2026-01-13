@@ -28,15 +28,9 @@ const Booking = () => {
     e.preventDefault();
 
     if (!formData.name || !formData.phone || !formData.service || !formData.date || !formData.time) {
-      toast({
-        title: '⚠️ Lengkapi Form',
-        description: 'Mohon lengkapi semua field yang wajib diisi',
-        variant: 'destructive'
-      });
       return;
     }
 
-    // Format tanggal ke format Indonesia
     const formatDate = (dateStr) => {
       const months = [
         'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -51,7 +45,7 @@ const Booking = () => {
 
     const formattedDate = formatDate(formData.date);
 
-    const message = `🔔 *BOOKING BARU - SEJAHTERA SERVICE* 🔔
+    const message = ` *BOOKING BARU - SEJAHTERA SERVICE* 
 
     ━━━━━━━━━━━━━━━━━━━━━━━━
     *DATA PELANGGAN*
@@ -80,13 +74,13 @@ const Booking = () => {
 
     _Mohon segera ditindaklanjuti. Terima kasih!_`;
 
-    // Nomor WhatsApp kamu (format internasional tanpa +)
-    const waNumber = '6281392813981'; 
+    // Nomor WhatsApp 
+    const waNumber = '6285258463046'; 
 
-    // Encode URL agar aman
+    // Encode URL 
     const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 
-    // Buka WhatsApp agar kamu menerima pesan
+    // Buka WhatsApp agar menerima pesan
     window.open(waUrl, '_blank');
 
     setFormData({
