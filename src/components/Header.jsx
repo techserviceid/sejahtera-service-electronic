@@ -183,11 +183,7 @@ const Header = () => {
                   <button onClick={() => scrollToSection('contact')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
                     KONTAK
                   </button>
-                  <a 
-                    href="https://wa.me/6285258463046"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="tel:+6285258463046">
                     <Button
                       className="bg-gradient-to-r from-red-600 to-red-700 
                                 hover:from-red-700 hover:to-red-800 
@@ -195,7 +191,7 @@ const Header = () => {
                                 w-12 h-12 
                                 rounded-full 
                                 flex items-center justify-center"
-                      title="Hubungi via WhatsApp"
+                      title="Hubungi via Telepon"
                     >
                       <Phone className="w-5 h-5" />
                     </Button>

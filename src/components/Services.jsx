@@ -19,14 +19,14 @@ const Services = () => {
       title: 'Perbaikan Mesin Cuci',
       description: 'Service mesin cuci 1 tabung dan 2 tabung dengan spare part original',
       color: 'from-red-600 to-red-700',
-      image: 'https://images.unsplash.com/photo-1662220984920-3bd1f88e846f?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      image: 'https://hisense.id/wp-content/uploads/2024/06/WSRB9013UB-productimg-2.jpg'
     },
     {
       icon: Flame,
       title: 'Perbaikan Kompor',
       description: 'Service kompor gas dan kompor tanam dengan hasil maksimal',
       color: 'from-red-700 to-red-800',
-      image: 'https://plus.unsplash.com/premium_photo-1661889228348-3928f5df1239?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      image: 'https://image.made-in-china.com/2f0j00pVPuhbeKAScl/Kenya-Stainless-Steel-Gas-Stove-3-Honeycomb-Burner-Kitchenware-Cooker.webp'
     },
     {
       icon: CookingPot,
@@ -47,28 +47,28 @@ const Services = () => {
       title: 'Perbaikan Setrika',
       description: 'Service setrika listrik dan uap dengan hasil seperti baru',
       color: 'from-red-700 to-red-800',
-      image: 'https://images.unsplash.com/photo-1540544093-b0880061e1a5?q=80&w=704&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      image: 'https://images.philips.com/is/image/philipsconsumer/vrs_9a6ed449b747c990359a4b628a355a7112ec3b80?$pnglarge$&wid=1250'
     },
     {
       icon: Bug,
       title: 'Perbaikan Raket Nyamuk',
       description: 'Service raket nyamuk elektrik dengan penggantian komponen berkualitas',
       color: 'from-red-500 to-red-600',
-      image: 'https://images.unsplash.com/photo-1615326882458-e0d45b097f55?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      image: 'https://hitantinyamuk.id/mediafl/files/3/asset_product/raket/gif%20raket%20produk.gif'
     },
     {
       icon: Gauge,
       title: 'Perbaikan Regulator Gas',
       description: 'Service regulator gas dengan standar keamanan tinggi',
       color: 'from-red-600 to-red-700',
-      image: 'https://images.unsplash.com/photo-1759750951607-703dd5c997ec?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      image: 'https://huddersfieldgastrade.co.uk/wp-content/uploads/2019/02/81DOHVtMHXL._SL1500_.jpg'
     },
     {
       icon: Droplets,
       title: 'Perbaikan Pompa Air',
       description: 'Service pompa air rumah tangga dengan teknisi profesional',
       color: 'from-red-700 to-red-800',
-      image: 'https://images.unsplash.com/photo-1639600993675-2281b2c939f0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      image: 'https://w7.pngwing.com/pngs/98/591/png-transparent-water-well-pump-total-dynamic-head-pump-jet-net-positive-suction-head-water-pump-compressor-water-pump-water-well-pump.png'
     },
     {
       icon: Volume2,

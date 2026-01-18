@@ -100,7 +100,7 @@ const Contact = () => {
   };
 
   const handleCancelComment = () => {
-    setNewComment({ name: '', email: '', message: '', rating: 5 });
+    setNewComment({ name: '', email: '', message: '', rating: 0 });
   };
 
   const handleAdminLogin = async (e) => {
@@ -138,9 +138,15 @@ const Contact = () => {
   };
 
   // Statistik
-  const averageRating = comments.length > 0 
-    ? (comments.reduce((sum, c) => sum + (c.rating || 5), 0) / comments.length).toFixed(1)
-    : 5.0;
+  const ratedComments = comments.filter(c => c.rating && c.rating > 0);
+
+  const averageRating =
+    ratedComments.length > 0
+      ? (
+          ratedComments.reduce((sum, c) => sum + c.rating, 0) /
+          ratedComments.length
+        ).toFixed(1)
+      : "0.0";
 
   const verifiedCount = comments.filter(c => c.verified).length;
 
