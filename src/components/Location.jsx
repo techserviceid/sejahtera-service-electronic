@@ -228,8 +228,9 @@ const Location = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Informasi</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-red-500 via-red-600 to-rose-700 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/30 relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full"></div>
+                    <MapPin className="w-5 h-5 text-white relative z-10" strokeWidth={2.5} />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Alamat</h4>

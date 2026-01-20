@@ -26,14 +26,14 @@ const Services = () => {
       title: 'Perbaikan Kompor',
       description: 'Service kompor gas dan kompor tanam dengan hasil maksimal',
       color: 'from-red-700 to-red-800',
-      image: 'https://image.made-in-china.com/2f0j00pVPuhbeKAScl/Kenya-Stainless-Steel-Gas-Stove-3-Honeycomb-Burner-Kitchenware-Cooker.webp'
+      image: 'https://images.tokopedia.net/img/cache/700/aphluv/1997/1/1/f418ae47b72548e28b0a2c2424cd54e5~.jpeg'
     },
     {
       icon: CookingPot,
       title: 'Perbaikan Magic Com',
       description: 'Service rice cooker atau magic com segala merk dengan garansi',
       color: 'from-red-500 to-red-600',
-      image: 'https://images.unsplash.com/photo-1544233726-9f1d2b27be8b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      image: 'https://arti-assets.sgp1.cdn.digitaloceanspaces.com/mamasukakitchenstore/products/462e1637-0f84-45ab-84d1-a7b90f130096.jpg'
     },
     {
       icon: Tv,
@@ -68,7 +68,7 @@ const Services = () => {
       title: 'Perbaikan Pompa Air',
       description: 'Service pompa air rumah tangga dengan teknisi profesional',
       color: 'from-red-700 to-red-800',
-      image: 'https://w7.pngwing.com/pngs/98/591/png-transparent-water-well-pump-total-dynamic-head-pump-jet-net-positive-suction-head-water-pump-compressor-water-pump-water-well-pump.png'
+      image: 'https://s3.ap-southeast-3.amazonaws.com/hartono-mh1/images/detailed/354/PBH235C.jpg'
     },
     {
       icon: Volume2,
