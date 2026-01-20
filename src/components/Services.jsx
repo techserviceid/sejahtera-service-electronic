@@ -83,18 +83,18 @@ const Services = () => {
     e.preventDefault();
     e.stopPropagation();
     
-    const bookingSection = document.getElementById('booking');
+    const consultSection = document.getElementById('consult');
     
-    if (bookingSection) {
-      // Scroll ke booking section
-      bookingSection.scrollIntoView({ 
+    if (consultSection) {
+      // Scroll ke consult section
+      consultSection.scrollIntoView({ 
         behavior: 'smooth', 
         block: 'start' 
       });
       
-      console.log('Scrolling to booking section with service:', serviceTitle);
+      console.log('Scrolling to consult section with service:', serviceTitle);
     } else {
-      console.error('Booking section not found!');
+      console.error('Consult section not found!');
     }
   };
 

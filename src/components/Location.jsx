@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, Send, X, Lock, Unlock, Star, TrendingUp, Award } f
 import { Button } from '../ui/button';
 import { useToast } from '../ui/use-toast';
 
-const Contact = () => {
+const Location = () => {
   const { toast } = useToast();
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
@@ -34,7 +34,7 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    const storedComments = JSON.parse(localStorage.getItem('contact_messages') || '[]');
+    const storedComments = JSON.parse(localStorage.getItem('location_messages') || '[]');
     setComments(storedComments);
     
     // Cek apakah admin sudah login
@@ -67,7 +67,7 @@ const Contact = () => {
 
     const updatedComments = [comment, ...comments];
     setComments(updatedComments);
-    localStorage.setItem('contact_messages', JSON.stringify(updatedComments));
+    localStorage.setItem('location_messages', JSON.stringify(updatedComments));
     
     setNewComment({ name: '', email: '', message: '', rating: 0 }); 
   };
@@ -83,7 +83,7 @@ const Contact = () => {
       c.id === id ? { ...c, reply: replyText.trim(), verified: true } : c
     );
     setComments(updatedComments);
-    localStorage.setItem('contact_messages', JSON.stringify(updatedComments));
+    localStorage.setItem('location_messages', JSON.stringify(updatedComments));
     
     setReplyTexts(prev => {
       const updated = { ...prev };
@@ -95,7 +95,7 @@ const Contact = () => {
   const handleDeleteComment = async (id) => {
     const updatedComments = comments.filter((c) => c.id !== id);
     setComments(updatedComments);
-    localStorage.setItem('contact_messages', JSON.stringify(updatedComments));
+    localStorage.setItem('location_messages', JSON.stringify(updatedComments));
     setDeleteConfirm(null);
   };
 
@@ -151,7 +151,7 @@ const Contact = () => {
   const verifiedCount = comments.filter(c => c.verified).length;
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 overflow-x-hidden">
+    <section id="location" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 overflow-x-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -160,13 +160,13 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <span className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            KONTAK
+            LOKASI
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Ada Keluhan?
+            Area Layanan
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Kami siap menjawab dan memberikan solusi terbaik
+            Datang langsung dengan jangkauan area yang jelas
           </p>
 
           {/* Statistics Cards */}
@@ -229,34 +229,6 @@ const Contact = () => {
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                    <p className="text-gray-600">
-                      <a href="mailto:sejahteraserviceid@gmail.com" className="hover:text-red-600 transition-colors">
-                        sejahteraserviceid@gmail.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">WhatsApp</h4>
-                    <p className="text-gray-600">
-                      <a href="https://wa.me/6285258463046" target="_blank" rel="noopener noreferrer" className="hover:text-green-600 transition-colors">
-                        0852-5846-3046
-                      </a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -306,19 +278,6 @@ const Contact = () => {
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                     placeholder="Nama Anda"
                     required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email (Opsional)
-                  </label>
-                  <input
-                    type="email"
-                    value={newComment.email}
-                    onChange={(e) => setNewComment({...newComment, email: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
-                    placeholder="example@gmail.com"
                   />
                 </div>
 
@@ -718,4 +677,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Location;

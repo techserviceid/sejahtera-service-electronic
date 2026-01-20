@@ -3,8 +3,8 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import Booking from './components/Booking';
-import Contact from './components/Contact';
+import Consult from './components/Consult';
+import Location from './components/Location';
 import Footer from './components/Footer';
 import FAQ from './components/FAQ';
 import { Toaster } from "./ui/toaster";
@@ -24,9 +24,9 @@ function App() {
         <Header />
         <Hero />
         <Services />
-        <Booking />
+        <Consult />
         <FAQ />
-        <Contact />
+        <Location />
         <Footer />
         <Toaster />
       </div>

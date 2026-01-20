@@ -119,35 +119,31 @@ const Header = () => {
               <button onClick={() => scrollToSection('services')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
                 LAYANAN
               </button>
-              <button onClick={() => scrollToSection('booking')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
-                BOOKING
+              <button onClick={() => scrollToSection('consult')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
+                KONSULTASI
               </button>
               <button onClick={() => scrollToSection('faq')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
                 FAQ
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
-                KONTAK
+              <button onClick={() => scrollToSection('location')} className="text-gray-700 hover:text-red-600 transition-colors font-medium">
+                LOKASI
               </button>
             </nav>
 
             <div className="hidden lg:flex items-center gap-4">
-              <a 
-                href="https://wa.me/6285258463046"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  className="bg-gradient-to-r from-red-600 to-red-700 
-                            hover:from-red-700 hover:to-red-800 
-                            text-white 
-                            w-12 h-12 
-                            rounded-full 
-                            flex items-center justify-center"
-                  title="Hubungi via WhatsApp"
-                >
-                  <Phone className="w-5 h-5" />
-                </Button>
-              </a>
+              <a href="tel:+6285258463046">
+                    <Button
+                      className="bg-gradient-to-r from-red-600 to-red-700 
+                                hover:from-red-700 hover:to-red-800 
+                                text-white 
+                                w-12 h-12 
+                                rounded-full 
+                                flex items-center justify-center"
+                      title="Hubungi via Telepon"
+                    >
+                      <Phone className="w-5 h-5" />
+                    </Button>
+                  </a>
             </div>
 
             <button
@@ -167,21 +163,21 @@ const Header = () => {
                 transition={{ duration: 0.3 }}
                 className="lg:hidden border-t border-gray-200 py-4"
               >
-                <nav className="flex flex-col gap-4">
-                  <button onClick={() => scrollToSection('home')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
+                <nav className="flex flex-col gap-4 items-center">
+                  <button onClick={() => scrollToSection('home')} className="text-center text-gray-700 hover:text-red-600 transition-colors font-medium">
                     BERANDA
                   </button>
-                  <button onClick={() => scrollToSection('services')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
+                  <button onClick={() => scrollToSection('services')} className="text-center text-gray-700 hover:text-red-600 transition-colors font-medium">
                     LAYANAN
                   </button>
-                  <button onClick={() => scrollToSection('booking')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
-                    BOOKING
+                  <button onClick={() => scrollToSection('consult')} className="text-center text-gray-700 hover:text-red-600 transition-colors font-medium">
+                    KONSULTASI
                   </button>
-                  <button onClick={() => scrollToSection('faq')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
+                  <button onClick={() => scrollToSection('faq')} className="text-center text-gray-700 hover:text-red-600 transition-colors font-medium">
                     FAQ
                   </button>
-                  <button onClick={() => scrollToSection('contact')} className="text-left text-gray-700 hover:text-red-600 transition-colors font-medium">
-                    KONTAK
+                  <button onClick={() => scrollToSection('location')} className="text-center text-gray-700 hover:text-red-600 transition-colors font-medium">
+                    LOKASI
                   </button>
                   <a href="tel:+6285258463046">
                     <Button

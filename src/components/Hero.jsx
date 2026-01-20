@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
 import { Button } from '../ui/button';
-import heroImage from '../assets/hero-9190b8d3.png';
+import heroImage from '../assets/hero.png';
 
 const Hero = () => {
   const scrollToSection = (id) => {
@@ -67,7 +67,7 @@ const Hero = () => {
               
               {/* Main Button */}
               <Button
-                onClick={() => scrollToSection('booking')}
+                onClick={() => scrollToSection('consult')}
                 className="
                   rounded-full 
                   bg-white 
