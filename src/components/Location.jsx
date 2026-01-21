@@ -405,7 +405,7 @@ const Location = () => {
                     </div>
                   </form>
                   <p className="text-xs text-gray-500 mt-2">
-                    Hanya admin yang dapat membalas ulasan pelanggan
+                    Hanya admin yang dapat membalas ulasan
                   </p>
                 </div>
               )}
