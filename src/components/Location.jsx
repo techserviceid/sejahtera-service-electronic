@@ -52,7 +52,6 @@ const Location = () => {
     const comment = {
       id: Date.now(),
       name: newComment.name,
-      email: newComment.email,
       message: newComment.message,
       rating: newComment.rating || 0,
       date: new Date().toLocaleDateString('id-ID', { 
@@ -68,7 +67,7 @@ const Location = () => {
     setComments(updatedComments);
     localStorage.setItem('location_messages', JSON.stringify(updatedComments));
     
-    setNewComment({ name: '', email: '', message: '', rating: 0 }); 
+    setNewComment({ name: '', message: '', rating: 0 }); 
   };
 
   const handleReply = async (id) => {
@@ -99,7 +98,7 @@ const Location = () => {
   };
 
   const handleCancelComment = () => {
-    setNewComment({ name: '', email: '', message: '', rating: 0 });
+    setNewComment({ name: '', message: '', rating: 0 });
   };
 
   const handleAdminLogin = async (e) => {
@@ -466,7 +465,7 @@ const Location = () => {
                   Kirim Ulasan
                 </Button>
 
-                {(newComment.name || newComment.email || newComment.message) && (
+                {(newComment.name || newComment.message) && (
                   <button
                     type="button"
                     onClick={handleCancelComment}
@@ -703,7 +702,7 @@ const Location = () => {
                     {/* Header Section - Nama dan Tanggal */}
                     <div className="flex justify-between items-center mb-3">
                       
-                      {/* Left Side - Nama dan Email */}
+                      {/* Left Side - Nama */}
                       <div className="flex-1 pr-4">
                         <div className="flex items-center gap-2 flex-wrap">
                           <p className="font-bold text-gray-900 text-lg">{c.name}</p>
@@ -714,7 +713,6 @@ const Location = () => {
                             </span>
                           )}
                         </div>
-                        {c.email && <p className="text-gray-500 text-sm mt-0.5">{c.email}</p>}
                       </div>
                       
                       {/* Right Side - Tanggal dan Tombol Hapus */}
