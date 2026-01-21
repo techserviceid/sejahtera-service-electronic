@@ -305,7 +305,7 @@ const Location = () => {
                 </div>
               </motion.div>
 
-              {/* Card 2 - Verified Reviews */}
+              {/* Card 2 - Verified */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -318,13 +318,18 @@ const Location = () => {
                     <Award className="w-6 h-6 text-white" strokeWidth={2.5} />
                   </div>
                   <p className="text-3xl font-bold text-gray-900 mb-1">{verifiedCount}</p>
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-1 bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-semibold mb-4">
+                    <div className="bg-green-600 rounded-full animate-pulse"></div>
+                    Verified
+                  </div>
                   <p className="text-xs text-gray-600 font-semibold leading-tight">
                     Ulasan<br />Terverifikasi
                   </p>
                 </div>
               </motion.div>
 
-              {/* Card 3 - Total Reviews */}
+              {/* Card 3 - Total */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -337,6 +342,10 @@ const Location = () => {
                     <TrendingUp className="w-6 h-6 text-white" strokeWidth={2.5} />
                   </div>
                   <p className="text-3xl font-bold text-gray-900 mb-1">{comments.length}</p>
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-semibold mb-4">
+                    Active
+                  </div>
                   <p className="text-xs text-gray-600 font-semibold leading-tight">
                     Total<br />Ulasan
                   </p>
