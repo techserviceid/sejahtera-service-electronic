@@ -140,7 +140,7 @@ const Hero = () => {
                 className="w-full h-auto object-contain max-w-full"
                 animate={{ rotate: 360 }}
                 transition={{
-                  duration: 40,
+                  duration: 35,
                   repeat: Infinity,
                   ease: "linear"
                 }}

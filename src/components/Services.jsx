@@ -40,7 +40,7 @@ const Services = () => {
       title: 'Perbaikan Set Top Box',
       description: 'Service set top box TV digital dan receiver dengan teknisi ahli',
       color: 'from-red-600 to-red-700',
-      image: 'https://images.unsplash.com/photo-1574974409771-cebec54deb00?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      image: 'https://assets.dianisa.com/media/2023/09/3-Set-Top-Box-Polytron-PDV-610T2.webp'
     },
     {
       icon: Zap,

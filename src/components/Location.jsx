@@ -8,8 +8,7 @@ const Location = () => {
   const { toast } = useToast();
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
-    name: '',
-    email: '',
+    name: '',  
     message: '',
     rating: 0
   });
@@ -151,69 +150,203 @@ const Location = () => {
   const verifiedCount = comments.filter(c => c.verified).length;
 
   return (
-    <section id="location" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 overflow-x-hidden">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            LOKASI
-          </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Area Layanan
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Datang langsung dengan jangkauan area yang jelas
-          </p>
+  <section id="location" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 overflow-x-hidden">
+    <div className="container mx-auto px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-16"
+      >
+        <span className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          LOKASI
+        </span>
+        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          Area Layanan
+        </h2>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Datang langsung dengan jangkauan area yang jelas
+        </p>
 
-          {/* Statistics Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
-            >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Star className="w-6 h-6 text-yellow-500 fill-yellow-500" />
-                <span className="text-3xl font-bold text-gray-900">{averageRating}</span>
-              </div>
-              <p className="text-sm text-gray-600">Rating Rata-rata</p>
-            </motion.div>
+        {/* Statistics Cards - RESPONSIVE PROFESSIONAL DESIGN */}
+          <div className="mt-8">
+            {/* Desktop Layout - NEW PROFESSIONAL CENTER DESIGN */}
+            <div className="hidden md:grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {/* Card 1 - Verified */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all group"
+              >
+                <div className="flex flex-col items-center text-center">
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg mb-4 group-hover:scale-110 transition-transform">
+                    <Award className="w-9 h-9 text-white" strokeWidth={2.5} />
+                  </div>
+                  
+                  {/* Number */}
+                  <p className="text-5xl font-bold text-gray-900 mb-2">{verifiedCount}</p>
+                  
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold mb-4">
+                    <div className="w-1.5 h-1.5 bg-green-600 rounded-full animate-pulse"></div>
+                    Verified
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-base font-bold text-gray-800 mb-1">Ulasan Terverifikasi</h3>
+                </div>
+              </motion.div>
+              
+              {/* Card 2 - Rating */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 rounded-2xl p-8 shadow-xl border border-yellow-200/50 hover:shadow-2xl transition-all group"
+              >
+                <div className="flex flex-col items-center text-center">
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg mb-4 ring-4 ring-yellow-200/50 group-hover:scale-110 transition-transform">
+                    <Star className="w-9 h-9 text-white fill-white" strokeWidth={2} />
+                  </div>
+                  
+                  {/* Number */}
+                  <p className="text-5xl font-bold text-gray-900 mb-2">{averageRating}</p>
+                  
+                  {/* DYNAMIC 5 Stars Row - Based on averageRating */}
+                  <div className="flex gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star 
+                        key={star}
+                        className={`w-4 h-4 transition-colors ${
+                          star <= Math.round(parseFloat(averageRating))
+                            ? 'text-yellow-500 fill-yellow-500' 
+                            : 'text-gray-300 fill-gray-300'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-base font-bold text-gray-800 mb-1">Rating Rata-rata</h3>
+                </div>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
-            >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Award className="w-6 h-6 text-green-500" />
-                <span className="text-3xl font-bold text-gray-900">{verifiedCount}</span>
-              </div>
-              <p className="text-sm text-gray-600">Ulasan Terverifikasi</p>
-            </motion.div>
+              {/* Card 3 - Total */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all group"
+              >
+                <div className="flex flex-col items-center text-center">
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg mb-4 group-hover:scale-110 transition-transform">
+                    <TrendingUp className="w-9 h-9 text-white" strokeWidth={2.5} />
+                  </div>
+                  
+                  {/* Number */}
+                  <p className="text-5xl font-bold text-gray-900 mb-2">{comments.length}</p>
+                  
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold mb-4">
+                    <TrendingUp className="w-3 h-3" />
+                    Active
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-base font-bold text-gray-800 mb-1">Total Ulasan</h3>
+                </div>
+              </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
-            >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <TrendingUp className="w-6 h-6 text-blue-500" />
-                <span className="text-3xl font-bold text-gray-900">{comments.length}</span>
-              </div>
-              <p className="text-sm text-gray-600">Total Ulasan</p>
-            </motion.div>
+          {/* Mobile Layout - EQUAL SIZE CARDS */}
+          <div className="md:hidden max-w-md mx-auto">
+            <div className="grid grid-cols-2 gap-4">
+              {/* Card 1 - Rating */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 rounded-2xl p-6 shadow-lg border border-yellow-200/50 hover:shadow-xl transition-all col-span-2"
+              >
+                <div className="flex flex-col items-center text-center">
+                  {/* Icon */}
+                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg mb-3">
+                    <Star className="w-6 h-6 text-white fill-white" strokeWidth={2} />
+                  </div>
+                  
+                  {/* Number */}
+                  <p className="text-3xl font-bold text-gray-900 mb-1">{averageRating}</p>
+                  
+                  {/* Stars Row */}
+                  <div className="flex gap-1 mb-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star 
+                        key={star}
+                        className={`w-4 h-4 transition-colors ${
+                          star <= Math.round(parseFloat(averageRating))
+                            ? 'text-yellow-500 fill-yellow-500' 
+                            : 'text-gray-300 fill-gray-300'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Title */}
+                  <p className="text-xs text-gray-600 font-semibold leading-tight">
+                    Rating<br />Rata-rata
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Card 2 - Verified Reviews */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-3 shadow-lg">
+                    <Award className="w-6 h-6 text-white" strokeWidth={2.5} />
+                  </div>
+                  <p className="text-3xl font-bold text-gray-900 mb-1">{verifiedCount}</p>
+                  <p className="text-xs text-gray-600 font-semibold leading-tight">
+                    Ulasan<br />Terverifikasi
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Card 3 - Total Reviews */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-3 shadow-lg">
+                    <TrendingUp className="w-6 h-6 text-white" strokeWidth={2.5} />
+                  </div>
+                  <p className="text-3xl font-bold text-gray-900 mb-1">{comments.length}</p>
+                  <p className="text-xs text-gray-600 font-semibold leading-tight">
+                    Total<br />Ulasan
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* KOLOM KIRI */}
