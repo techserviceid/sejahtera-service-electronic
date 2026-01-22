@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
 import { Button } from '../ui/button';
-import heroImage from '../assets/hero-9190b8d3.png';
+import heroImage from '../assets/hero.png';
 
 const Hero = () => {
   const scrollToSection = (id) => {
@@ -140,7 +140,7 @@ const Hero = () => {
                 className="w-full h-auto object-contain max-w-full"
                 animate={{ rotate: 360 }}
                 transition={{
-                  duration: 35,
+                  duration: 100,
                   repeat: Infinity,
                   ease: "linear"
                 }}

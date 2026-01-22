@@ -348,7 +348,6 @@ function Consult() {
 
             <a
               href="https://wa.me/6285258463046"
-              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white text-red-600 font-semibold px-8 py-4 rounded-xl hover:bg-red-50 transition-all transform hover:scale-105 shadow-lg"
             >

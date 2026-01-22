@@ -218,16 +218,28 @@ const Location = () => {
                   
                   {/* DYNAMIC 5 Stars Row - Based on averageRating */}
                   <div className="flex gap-1 mb-4">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star 
-                        key={star}
-                        className={`w-4 h-4 transition-colors ${
-                          star <= Math.round(parseFloat(averageRating))
-                            ? 'text-yellow-500 fill-yellow-500' 
-                            : 'text-gray-300 fill-gray-300'
-                        }`}
-                      />
-                    ))}
+                    {[1, 2, 3, 4, 5].map((star) => {
+                      const rating = parseFloat(averageRating);
+                      const isFull = star <= Math.floor(rating);
+                      const isHalf = !isFull && star === Math.ceil(rating) && rating % 1 >= 0.3;
+                      
+                      return (
+                        <div key={star} className="relative w-4 h-4">
+                          {/* Background star (empty) */}
+                          <Star className="absolute w-4 h-4 text-gray-300 fill-gray-300" />
+                          
+                          {/* Foreground star (full or half) */}
+                          {(isFull || isHalf) && (
+                            <div 
+                              className="absolute overflow-hidden"
+                              style={{ width: isFull ? '100%' : '50%' }}
+                            >
+                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                   
                   {/* Title */}
@@ -284,18 +296,30 @@ const Location = () => {
                   {/* Number */}
                   <p className="text-3xl font-bold text-gray-900 mb-1">{averageRating}</p>
                   
-                  {/* Stars Row */}
+                  {/* DYNAMIC 5 Stars Row - Based on averageRating */}
                   <div className="flex gap-1 mb-2">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star 
-                        key={star}
-                        className={`w-4 h-4 transition-colors ${
-                          star <= Math.round(parseFloat(averageRating))
-                            ? 'text-yellow-500 fill-yellow-500' 
-                            : 'text-gray-300 fill-gray-300'
-                        }`}
-                      />
-                    ))}
+                    {[1, 2, 3, 4, 5].map((star) => {
+                      const rating = parseFloat(averageRating);
+                      const isFull = star <= Math.floor(rating);
+                      const isHalf = !isFull && star === Math.ceil(rating) && rating % 1 >= 0.3;
+                      
+                      return (
+                        <div key={star} className="relative w-4 h-4">
+                          {/* Background star (empty) */}
+                          <Star className="absolute w-4 h-4 text-gray-300 fill-gray-300" />
+                          
+                          {/* Foreground star (full or half) */}
+                          {(isFull || isHalf) && (
+                            <div 
+                              className="absolute overflow-hidden"
+                              style={{ width: isFull ? '100%' : '50%' }}
+                            >
+                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                   
                   {/* Title */}
