@@ -8,7 +8,7 @@ const MAX_IMAGE_SIZE_MB = 100;
 const MAX_VIDEO_SIZE_MB = 1000;
 
 // Base URL API Laravel, diambil dari .env (lihat file .env.example)
-const API_URL = import.meta.env.VITE_API_URL || 'http://sejahtera-service-electronic-api.test/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://sejahtera-service-electronic-api.up.railway.app/api';
 // APP_URL dipakai untuk menyusun URL lengkap file media (foto/video) yang disimpan di server
 const APP_URL = API_URL.replace(/\/api\/?$/, '');
 
