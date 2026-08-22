@@ -91,8 +91,8 @@ const Hero = () => {
             </h1>
 
             <p className="text-sm sm:text-base lg:text-lg text-blue-50 mb-4 sm:mb-5 leading-relaxed max-w-xl text-center">
-              Teknisi kami siap menangani kerusakan elektronik Anda<br />
-              Silakan tekan tombol di bawah
+              Teknisi siap menangani kerusakan elektronik Anda<br />
+              Silakan tekan tombol
             </p>
 
             {/* TOMBOL BUTTON - UPDATED */}
@@ -171,7 +171,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative order-1 lg:order-2 mt-6 sm:mt-8 lg:mt-0 mb-0 lg:mb-0 lg:col-span-2"
           >
-            <div className="relative w-full max-w-full lg:max-w-lg xl:max-w-xl mx-auto">
+            <div className="relative w-full max-w-[260px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-lg xl:max-w-xl mx-auto">
               <motion.img
                 src={heroImage} 
                 alt="Teknisi service elektronik"
