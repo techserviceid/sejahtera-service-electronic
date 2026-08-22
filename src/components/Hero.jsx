@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
 import { Button } from '../ui/button';
-import heroImage from '../assets/hero.png';
+import heroImage from '../assets/favicon.png';
 
 const Hero = () => {
   const scrollToSection = (id) => {
@@ -36,14 +36,8 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 lg:min-h-screen lg:flex lg:items-center lg:pt-0 lg:pb-0 overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-red-800"
+      className="relative pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 lg:min-h-screen lg:flex lg:items-center lg:pt-0 lg:pb-0 overflow-hidden bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950"
     >
-      {/* Background blur */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl" />
-      </div>
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-full">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 lg:gap-12 items-center">
 
@@ -91,12 +85,12 @@ const Hero = () => {
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-center">
               Sejahtera Service
-              <span className="block text-red-100">
+              <span className="block text-blue-100">
                 Electronic
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base lg:text-lg text-red-50 mb-4 sm:mb-5 leading-relaxed max-w-xl text-center">
+            <p className="text-sm sm:text-base lg:text-lg text-blue-50 mb-4 sm:mb-5 leading-relaxed max-w-xl text-center">
               Teknisi kami siap menangani kerusakan elektronik Anda<br />
               Silakan tekan tombol di bawah
             </p>
@@ -137,7 +131,7 @@ const Hero = () => {
                   strokeWidth="2.8" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
-                  className="w-9 h-9 sm:w-11 sm:h-11 text-red-600 group-hover:rotate-180 transition-transform duration-500"
+                  className="w-9 h-9 sm:w-11 sm:h-11 text-blue-900 group-hover:rotate-180 transition-transform duration-500"
                 >
                   <path d="M12 2v10" />
                   <path d="M18.4 6.6a9 9 0 1 1-12.77.04" />
@@ -152,19 +146,19 @@ const Hero = () => {
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-md">
               <div className="flex items-center gap-2 justify-center">
-                <CheckCircle className="w-5 h-5 text-red-200" />
+                <CheckCircle className="w-5 h-5 text-blue-200" />
                 <span className="text-sm">Garansi Service</span>
               </div>
               <div className="flex items-center gap-2 justify-center">
-                <Clock className="w-5 h-5 text-red-200" />
+                <Clock className="w-5 h-5 text-blue-200" />
                 <span className="text-sm">Proses Cepat</span>
               </div>
               <div className="flex items-center gap-2 justify-center">
-                <Shield className="w-5 h-5 text-red-200" />
+                <Shield className="w-5 h-5 text-blue-200" />
                 <span className="text-sm">Teknisi Ahli</span>
               </div>
               <div className="flex items-center gap-2 justify-center">
-                <Wrench className="w-5 h-5 text-red-200" />
+                <Wrench className="w-5 h-5 text-blue-200" />
                 <span className="text-sm">Spare Part Original</span>
               </div>
             </div>
@@ -175,7 +169,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative order-1 lg:order-2 mb-0 lg:mb-0 lg:col-span-2"
+            className="relative order-1 lg:order-2 mt-6 sm:mt-8 lg:mt-0 mb-0 lg:mb-0 lg:col-span-2"
           >
             <div className="relative w-full max-w-full lg:max-w-lg xl:max-w-xl mx-auto">
               <motion.img
